@@ -1,0 +1,41 @@
+{% extends "layout.html" %}
+
+{% block title %}
+Home Page
+{% endblock %}
+
+{% block content %}
+<h1 class="bg-blue-500 text-5xl p-5  font-bold">Arslan With code || Arslan with chai</h1>
+<p class="text-center w-60 bg-green-400 m-8 p-5 text-black text-2xl ">My home blog is here kindly start your HomePage blog</p>
+
+<div class="grid grid-cols-3 gap-4 m-4"><button>
+
+            </button>
+<!--<div class="container">-->
+      {% for chai in chais %}
+        <div class="bg-blue-800 p-5 rounded">
+
+          <img class="m-4 border-4 border-indigo-600" style="height: 300px;"  src="{{ chai.image.url }}" alt="Image is loading" />
+            <h3 class="text-2xl font-bold">{{chai.name}}</h3>
+
+            <a href="{% url 'chai_detail' chai.id %}">
+                <button class="inline-flex items-center w-100 justify-center px-4 py-2 border border-transparent text-sm font-medium rounded-md text-white bg-orang-600 hover bg-orange-700 focus outline-none focus:ring-2 focus:ring-offset-2 focus-ring-orange-500">
+                    {{chai.type }} - {{chai.id}}
+                </button>
+<br/>
+<p class="m-2"></p>
+                  <button class="inline-flex items-center w-100 justify-center px-4 py-2 border border-transparent text-sm font-medium rounded-md text-white bg-orang-600 hover bg-orange-700 focus outline-none focus:ring-2 focus:ring-offset-2 focus-ring-orange-500">
+                    Price - {{chai.price}}$
+                </button>
+            </a>
+        </div>
+
+
+      {% empty %}
+        <p class="text-center text-gray-500">No items available.</p>
+      {% endfor %}
+<!--    </div>-->
+  </div>
+
+
+{% endblock %}

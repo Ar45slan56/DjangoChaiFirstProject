@@ -1,0 +1,29 @@
+{% extends "layout.html" %}
+
+{% block title %}
+Home Page
+{% endblock %}
+
+{% block content %}
+<div class="bg-red-600 m-5 p-5 text-3xl text-black rounded-md">
+    <h1>Test Content for HTML</h1>
+    <p>Form store is here</p>
+
+    <form method="POST" class="text-red">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit" class="p-2 text-white bg-blue-500 rounded-md">
+            Search Store
+        </button>
+    </form>
+</div>
+
+{% if stores %}
+<h1 class="bg-red-500 m-5 p-3 rounded-md text-black text-3xl">Available Store is here</h1>
+<ul>
+    {% for store in stores %}
+    <span class="m-5 p-3 bg-red-500 rounded-md text-black text-3xl ">Store Name:  <span class="text-white">{{store.name}}</span></span>
+    {% endfor %}
+</ul>
+{% endif %}
+{% endblock %}
